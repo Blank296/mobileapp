@@ -41,7 +41,7 @@ function saveLocalStorage() {
           localStorage.setItem(key, value);
           viewStorage();
           let w_msg =
-            "LocalStorageに " + key + " : " + value + " を保存しました。";
+            "LocalStorageに " + key + "  " + value + " を保存しました。";
           window.alert(w_msg);
           document.getElementById("textKey").value = "";
           document.getElementById("textMemo").value = "";
@@ -58,16 +58,14 @@ function delLocalStorage() {
     "click",
     function (e) {
       e.preventDefault();
-      const chkbox1 = document.getElementsByName("chkbox1");
-      const table1 = document.getElementById("table1");
-      let w_cnt = "0";
-      w_cnt = selectCheckBox("del");
+      let w_sel = "0";
+      w_sel = selectCheckBox();
 
-      if (w_cnt >= 1) {
-        //const key = document.getElementById("textKey").value;
-        //const value = document.getElementById("textMemo").value;
+      if (w_sel === "1") {
+        const key = document.getElementById("textKey").value;
+        const value = document.getElementById("textMemo").value;
         let w_confirm = window.confirm(
-          "LocalStorageから選択されている" + w_cnt + "件を削除しますか？"
+          "LocalStorageから\n" + key + " " + value + "\nを削除しますか？"
         );
         if (w_confirm === true) {
           localStorage.removeItem(key);
